@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user,:except => [:login]
   def login
     user = Patient.find_by(name: params[:name])
     if user && user.authenticate(params[:password])
